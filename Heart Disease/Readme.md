@@ -1,0 +1,272 @@
+# ❤️ Heart Disease Prediction
+
+A Machine Learning project that predicts whether a person is likely to have **heart disease** based on various medical and physiological features.
+
+This project was developed as part of my **Machine Learning practice and learning journey**, focusing on data handling, preprocessing, model training, evaluation, and building a simple predictive system.
+
+---
+
+## 📌 Project Overview
+
+Heart disease is one of the major health-related concerns worldwide. Machine Learning can be used to analyze medical attributes and identify patterns associated with heart disease.
+
+In this project, a **Logistic Regression** model is trained using the `heart_disease_data.csv` dataset to classify whether a person has heart disease based on 13 input features.
+
+The project covers:
+
+* Loading and exploring the dataset
+* Checking dataset dimensions
+* Checking for missing values
+* Separating features and target
+* Splitting data into training and testing sets
+* Training a Logistic Regression model
+* Evaluating model accuracy
+* Building a simple predictive system
+
+---
+
+## 📊 Dataset
+
+The dataset contains **303 records** and **14 columns**.
+
+* **13 input features**
+* **1 target variable**
+
+### Features
+
+| Feature    | Description                           |
+| ---------- | ------------------------------------- |
+| `age`      | Age of the person                     |
+| `sex`      | Gender                                |
+| `cp`       | Chest pain type                       |
+| `trestbps` | Resting blood pressure                |
+| `chol`     | Serum cholesterol                     |
+| `fbs`      | Fasting blood sugar                   |
+| `restecg`  | Resting electrocardiographic results  |
+| `thalach`  | Maximum heart rate achieved           |
+| `exang`    | Exercise-induced angina               |
+| `oldpeak`  | ST depression induced by exercise     |
+| `slope`    | Slope of the peak exercise ST segment |
+| `ca`       | Number of major vessels               |
+| `thal`     | Thalassemia-related feature           |
+| `target`   | Heart disease classification          |
+
+### Target Distribution
+
+The dataset contains:
+
+* **165** samples with target `1`
+* **138** samples with target `0`
+
+The notebook also confirms that **no missing values** are present in the dataset.
+
+---
+
+## 🧠 Machine Learning Model
+
+### Logistic Regression
+
+The project uses **Logistic Regression** from Scikit-learn for binary classification.
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+```
+
+The dataset is divided into:
+
+* **80% training data** → 242 samples
+* **20% testing data** → 61 samples
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+```
+
+---
+
+## 📈 Model Performance
+
+The trained Logistic Regression model achieved:
+
+### **Accuracy: 88.52%**
+
+```text
+Prediction Score: 0.8852459016393442
+```
+
+This accuracy is calculated using the predictions made on the test dataset.
+
+```python
+prediction_acc = accuracy_score(y_test, y_pred)
+```
+
+---
+
+## 🔮 Predictive System
+
+The notebook also implements a simple predictive system where individual patient information can be provided to the trained model.
+
+Example input:
+
+```python
+input_data = [45, 1, 3, 110, 264, 0, 1, 132, 0, 1.2, 1, 0, 3]
+```
+
+The input is converted into a NumPy array and reshaped before making the prediction.
+
+```python
+input_into_array = np.asarray(input_data)
+
+input_reshape = input_into_array.reshape(1, -1)
+
+prediction = model.predict(input_reshape)
+```
+
+The system then displays whether the model predicts the presence of heart disease.
+
+---
+
+## 🔄 Machine Learning Workflow
+
+```text
+Dataset
+   ↓
+Data Loading
+   ↓
+Data Exploration
+   ↓
+Check Missing Values
+   ↓
+Separate Features & Target
+   ↓
+Train-Test Split
+   ↓
+Logistic Regression
+   ↓
+Model Prediction
+   ↓
+Accuracy Evaluation
+   ↓
+Predictive System
+```
+
+---
+
+## 🛠️ Technologies Used
+
+* **Python**
+* **NumPy**
+* **Pandas**
+* **Scikit-learn**
+* **Jupyter Notebook**
+
+### Libraries
+
+```python
+import numpy as np
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+Heart-Disease/
+│
+├── Heart Disease.ipynb
+├── heart_disease_data.csv
+└── README.md
+```
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd Heart-Disease
+```
+
+### 3. Install the required libraries
+
+```bash
+pip install numpy pandas scikit-learn jupyter
+```
+
+### 4. Start Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+### 5. Open
+
+```text
+Heart Disease.ipynb
+```
+
+Run the notebook cells sequentially to reproduce the analysis, training, evaluation, and prediction.
+
+---
+
+## ⚠️ Note
+
+This project is created for **Machine Learning practice and educational purposes**. The predictions generated by this model should **not be considered medical advice or a clinical diagnosis**.
+
+The notebook also produces a Logistic Regression convergence warning with the default configuration. Further improvements could include feature scaling and tuning parameters such as `max_iter`.
+
+---
+
+## 🔮 Future Improvements
+
+Possible improvements to this project include:
+
+* Feature scaling and preprocessing pipelines
+* Hyperparameter tuning
+* Testing additional classification algorithms
+* Comparing model performance
+* Adding confusion matrix and classification report
+* Evaluating precision, recall, and F1-score
+* Building a web-based prediction interface
+* Saving and loading the trained model
+* Deploying the model as an API
+
+---
+
+## 🎯 Learning Outcomes
+
+Through this project, I practiced:
+
+* Working with real-world datasets
+* Data exploration using Pandas
+* Handling and checking data quality
+* Feature-target separation
+* Train-test splitting
+* Logistic Regression
+* Model prediction
+* Accuracy evaluation
+* Building a basic ML predictive system
+
+---
+
+## 👨‍💻 Author
+
+**Aryan Dongre**
+
+This project is part of my **Machine Learning practice and learning journey**.
